@@ -1,0 +1,136 @@
+\documentclass[11pt,letterpaper,oneside]{article}
+\usepackage[top=0.5in,left=1in,right=1in,bottom=1in]{geometry}
+%\usepackage[top=0.5in,left=1.8in,right=1.8in,bottom=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{amsmath}
+
+%\usepackage{setspace}
+%\doublespacing
+
+\title{Homework 4}
+\author{Dejun Qian}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item \textbf{Written Part}
+  \begin{enumerate}
+  \item 
+    \begin{enumerate}
+    \item The smoothed probabilities are shown below.
+
+  \begin{tabular}{l|cc}
+     & \multicolumn{2}{c}{Class}\\
+     \cline{2-3}
+     & +1 & -1\\ \hline
+                                     & \cellcolor[gray]{0.9}{$P(Attribute1=1\ | +1) = \frac{3+1}{4+2} = \frac{4}{6}$} & \cellcolor[gray]{0.9}{$P(Attribute1=1\ | -1) = \frac{2+1}{4+2} = \frac{3}{6}$}\\
+    \raisebox{1.5ex}[0pt]{Attribute1}& \cellcolor[gray]{0.7}{$P(Attribute1=0\ | +1) = \frac{1+1}{4+2} = \frac{2}{6}$} & \cellcolor[gray]{0.7}{$P(Attribute1=0\ | -1) = \frac{2+1}{4+2} = \frac{3}{6}$}\\
+                                     & \cellcolor[gray]{0.9}{$P(Attribute2=1\ | +1) = \frac{3+1}{4+2} = \frac{4}{6}$} & \cellcolor[gray]{0.9}{$P(Attribute2=1\ | -1) = \frac{1+1}{4+2} = \frac{2}{6}$}\\
+    \raisebox{1.5ex}[0pt]{Attribute2}& \cellcolor[gray]{0.7}{$P(Attribute2=0\ | +1) = \frac{1+1}{4+2} = \frac{2}{6}$} & \cellcolor[gray]{0.7}{$P(Attribute2=0\ | -1) = \frac{3+1}{4+2} = \frac{4}{6}$}\\
+                                     & \cellcolor[gray]{0.9}{$P(Attribute3=1\ | +1) = \frac{2+1}{4+2} = \frac{3}{6}$} & \cellcolor[gray]{0.9}{$P(Attribute3=1\ | -1) = \frac{2+1}{4+2} = \frac{3}{6}$}\\
+    \raisebox{1.5ex}[0pt]{Attribute3}& \cellcolor[gray]{0.7}{$P(Attribute3=0\ | +1) = \frac{2+1}{4+2} = \frac{3}{6}$} & \cellcolor[gray]{0.7}{$P(Attribute3=0\ | -1) = \frac{2+1}{4+2} = \frac{3}{6}$}\\
+                                     & \cellcolor[gray]{0.9}{$P(Attribute4=1\ | +1) = \frac{3+1}{4+2} = \frac{4}{6}$} & \cellcolor[gray]{0.9}{$P(Attribute2=1\ | -1) = \frac{0+1}{4+2} = \frac{1}{6}$}\\
+    \raisebox{1.5ex}[0pt]{Attribute4}& \cellcolor[gray]{0.7}{$P(Attribute4=0\ | +1) = \frac{1+1}{4+2} = \frac{2}{6}$} & \cellcolor[gray]{0.7}{$P(Attribute2=0\ | -1) = \frac{4+1}{4+2} = \frac{5}{6}$}\\
+  \end{tabular}
+
+
+    \item The following shows how the trained Naive Bayes classifier classifies the given example.
+
+$P(+1)P(Attribute1=1\ | +1)P(Attribute2=1\ | +1)P(Attribute3=0\ | +1)P(Attribute4=0\ | +1) = \frac{4}{8} \times \frac{4}{6} \times \frac{4}{6} \times \frac{3}{6} \times \frac{2}{6} = \frac{1}{27}$
+
+$P(-1)P(Attribute1=1\ | -1)P(Attribute2=1\ | -1)P(Attribute3=0\ | -1)P(Attribute4=0\ | -1) = \frac{4}{8} \times \frac{3}{6} \times \frac{2}{6} \times \frac{3}{6} \times \frac{5}{6} = \frac{5}{144}$
+
+$\frac{1}{27} > \frac{5}{144}$, so the given example is classified in class +1.
+    \end{enumerate}
+
+  \item 
+    \begin{enumerate}
+    \item The conditional probability tables are shown below.
+
+  Party
+  \begin{tabular}{|c|c|}
+     \hline
+     Rep& 70\%\\
+     \hline
+     Dem& 30\%\\
+     \hline
+  \end{tabular}
+
+  Title
+  \begin{tabular}{|c|c|c|}
+     \hline
+     & ``Right" & ``Left"\\
+     \hline
+     Rep& 10\% & 90\%\\
+     \hline
+     Dem& 90\% & 10\%\\
+     \hline
+  \end{tabular}
+
+  Five-Star Review
+  \begin{tabular}{|c|c|c|}
+     \hline
+     & True & False\\
+     \hline
+     ``Right"& 80\% & 20\%\\
+     \hline
+     ``Left"& 50\% & 50\%\\
+     \hline
+  \end{tabular}
+
+
+    \item The probability that a book with ``Left" in its title is written by a Democrat is shown below.
+
+$P(Dem | ``Left") = \frac{P(Dem, ``Left")}{P(``Left")} = \frac{P(Dem)P(``Left" | Dem)}{P(Dem)P(``Left" | Dem) + P(Rep)P(``Left" | Rep)} = \frac{30\% \times 10\%}{30\% \times 10\% + 70\% \times 90\%} = 30\%$
+
+    \item The probability that a book with five stars and with ``Right" in its title is written by Democrat is shown below.
+
+$P(Dem | FiveStar, ``Right") = P(FiveStar, ``Right")P(Dem, FiveStar, ``Right") = P(FiveStar | ``Right")P(``Right" | Dem) \times P(Dem)P(FiveStar | ``Right")P(``Right" | Dem) = 80\% \times 90\% \times 30\% \times 80\% \times 90\% = 15.552\%$
+    \end{enumerate}
+
+  \end{enumerate}
+
+\item The accuracy is 90.04\%. The confusion matrix is shown below.
+
+  \begin{tabular}{c|cccccccccc}
+     & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+   0 & 91&  0&  0&  0&  2&  0&  0&  0&  0&  2\\
+   1 & 0& 82&  0&  0&  0&  0&  1&  1&  6&  1\\
+   2 & 0&  1& 86&  0&  0&  0&  0&  0&  5&  2\\
+   3 & 0&  0&  0& 97&  0&  1&  0&  0&  1&  6\\
+   4 & 0&  1&  0&  0& 70&  0&  0&  8&  1&  4\\
+   5 & 0&  1&  1&  1&  1& 73&  1&  0&  3&  7\\
+   6 & 0&  2&  0&  0&  0&  0& 89&  0&  0&  0\\
+   7 & 0&  0&  1&  1&  0&  0&  0& 89&  3&  0\\
+   8 & 0&  2&  0&  5&  0&  3&  0&  0& 76&  2\\
+   9 & 0&  0&  0&  6&  3&  0&  0&  5&  2& 88\\
+  \end{tabular}
+
+The result shows that the accuracy is over 90\%. From the confusion matrix, we can see that no other digits are classified as '0', which means the classifier can recognize '0' very well. Compared to homework 1, the result is much better. In homework 1, the accuracy is less than 80\%. The attributes here are not independent, because the writings are usually continuous. However, Naive Bayes still does a very good job. The reason for this is that the result does not depend on the absolute value of the posteriori probability. It depends on the relative value of the posteriori compared to other classes.
+
+\item Using binning of the attributes, the accuracy is increased to 90.58\%. The confusion matrix is shown below.
+
+  \begin{tabular}{c|cccccccccc}
+     & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+   0 & 91&  0&  0&  0&  3&  0&  0&  0&  0&  1\\
+   1 & 0& 77&  0&  0&  0&  0&  2&  1&  9&  2\\
+   2 & 0&  1& 82&  0&  0&  0&  0&  2&  5&  4\\
+   3 & 0&  1&  0& 99&  0&  0&  0&  1&  0&  4\\
+   4 & 0&  1&  0&  0& 68&  2&  0&  7&  2&  4\\
+   5 & 0&  1&  3&  2&  1& 74&  1&  0&  0&  6\\
+   6 & 0&  2&  0&  0&  0&  0& 89&  0&  0&  0\\
+   7 & 0&  0&  0&  1&  0&  0&  0& 91&  2&  0\\
+   8 & 0&  0&  0&  1&  0&  1&  0&  1& 83&  2\\
+   9 & 0&  0&  0&  4&  1&  2&  0&  4&  1& 92\\
+  \end{tabular}
+
+The result shows that the accuracy increased when using binning of the attributes.
+\end{enumerate}
+
+\end{document}
