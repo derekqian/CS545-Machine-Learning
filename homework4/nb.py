@@ -125,6 +125,8 @@ if __name__ == "__main__":
     elif len(params)==2 and params[1]=='2':
         experiment2()
     else:
-        print 'testonly:'
-        testonly()
+        print 'usage:'
+        print '  experiment 1: python nb.py 1'
+        print '  experiment 2: python nb.py 2'
+
 

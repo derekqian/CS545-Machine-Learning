@@ -7,8 +7,8 @@
 \usepackage{url}
 \usepackage{amsmath}
 
-%\usepackage{setspace}
-%\doublespacing
+\usepackage{setspace}
+\doublespacing
 
 \title{Homework 4}
 \author{Dejun Qian}
@@ -91,7 +91,7 @@ $P(Dem | ``Left") = \frac{P(Dem, ``Left")}{P(``Left")} = \frac{P(Dem)P(``Left" |
 
     \item The probability that a book with five stars and with ``Right" in its title is written by Democrat is shown below.
 
-$P(Dem | FiveStar, ``Right") = P(FiveStar, ``Right")P(Dem, FiveStar, ``Right") = P(FiveStar | ``Right")P(``Right" | Dem) \times P(Dem)P(FiveStar | ``Right")P(``Right" | Dem) = 80\% \times 90\% \times 30\% \times 80\% \times 90\% = 15.552\%$
+$P(Dem | FiveStar, ``Right") = P(Dem, FiveStar, ``Right")/P(FiveStar, ``Right") =  P(Dem)P(FiveStar | ``Right")P(``Right" | Dem)/P(FiveStar | ``Right")P(``Right" | Dem) = 30\% \times 80\% \times 90\% / 80\% \times 90\% = 30\%$
     \end{enumerate}
 
   \end{enumerate}
